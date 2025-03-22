@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Returns - POS System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="return.css">
+</head>
+<body>
+    <div class="container">
+        <div class="return-page">
+            <div class="header">
+                <h1>Product Returns</h1>
+                <button class="back-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-arrow-left"></i> Back to POS
+                </button>
+            </div>
+            <div class="return-form">
+                <div class="form-group">
+                    <label for="invoice-number">Invoice Number:</label>
+                    <div class="input-group">
+                        <input type="text" id="invoice-number" placeholder="Try: INV-2025-001 or INV-2025-002">
+                        <button onclick="searchInvoice()" class="search-btn">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                </div>
+                <div id="invoice-details" class="hidden">
+                    <div class="invoice-info">
+                        <h3>Invoice Details</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">Date:</span>
+                                <span id="invoice-date"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Total:</span>
+                                <span id="invoice-total"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Status:</span>
+                                <span id="invoice-status"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="return-items">
+                        <h3>Select Items to Return</h3>
+                        <div class="return-items-header">
+                            <div class="col-select">Select</div>
+                            <div class="col-item">Item</div>
+                            <div class="col-price">Price</div>
+                            <div class="col-qty">Return Quantity</div>
+                            <div class="col-total">Total</div>
+                        </div>
+                        <div class="return-items-list"></div>
+                        <div class="return-summary">
+                            <div class="summary-item">
+                                <span>Selected Items:</span>
+                                <span id="selected-items-count">0</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Return Total:</span>
+                                <span id="return-total">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="return-reason">
+                        <h3>Return Details</h3>
+                        <div class="reason-section">
+                            <label for="return-reason">Return Reason:</label>
+                            <select id="return-reason" required>
+                                <option value="">Select a reason</option>
+                                <option value="defective">Defective Product</option>
+                                <option value="wrong-item">Wrong Item</option>
+                                <option value="not-satisfied">Customer Not Satisfied</option>
+                                <option value="damaged">Product Damaged</option>
+                                <option value="size-color">Wrong Size/Color</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="reason-section">
+                            <label for="return-condition">Product Condition:</label>
+                            <select id="return-condition" required>
+                                <option value="">Select condition</option>
+                                <option value="unopened">Unopened</option>
+                                <option value="like-new">Like New</option>
+                                <option value="used">Used</option>
+                                <option value="damaged">Damaged</option>
+                            </select>
+                        </div>
+                        <div class="reason-section">
+                            <label for="return-comments">Additional Comments:</label>
+                            <textarea id="return-comments" placeholder="Please provide any additional details about the return..."></textarea>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="cancel-btn" onclick="cancelReturn()">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button class="process-return-btn" onclick="processReturn()">
+                            <i class="fas fa-check"></i> Process Return
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="example-data.js"></script>
+    <script src="return.js"></script>
+</body>
+</html>

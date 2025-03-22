@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="header">
+                <h1>Supermarket POS</h1>
+                <div class="date-time" id="datetime">20 Mar 2025 15:39</div>
+            </div>
+            <div class="barcode-section">
+                <div class="barcode-input">
+                    <input type="text" id="barcode-input" placeholder="Enter barcode" autofocus>
+                </div>
+            </div>
+            <div class="quick-actions">
+                <button onclick="showProductList()">Product List</button>
+                <button onclick="showManualEntry()">Manual Entry</button>
+                <button onclick="window.location.href='return.html'">Returns</button>
+                <button onclick="window.location.href='invoices.html'">Invoice History</button>
+            </div>
+            <div class="product-info" id="product-info">
+                <h3>Last Scanned Item</h3>
+                <div id="last-scanned-info">No item scanned</div>
+            </div>
+        </div>
+        <div class="right-panel">
+            <div class="cart">
+                <h2>Current Transaction</h2>
+                <div class="cart-items" id="cart-items"></div>
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span id="cart-total">$0.00</span>
+                    </div>
+                    <div class="payment-method">
+                        <select id="payment-method" onchange="toggleCashInput()">
+                            <option value="cash">Cash</option>
+                            <option value="card">Credit/Debit Card</option>
+                            <option value="qr">QR Code</option>
+                        </select>
+                        <div id="cash-payment" class="cash-payment">
+                            <input type="number" id="cash-received" placeholder="Cash received" step="0.01" min="0">
+                            <div class="change-amount">
+                                <span>Change:</span>
+                                <span id="change-amount">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="checkout-btn" onclick="checkout()">
+                        <i class="fas fa-shopping-cart"></i>
+                        Checkout
+                    </button>
+                </div>
+                <div class="actions">
+                    <button class="clear-btn" onclick="clearCart()">Clear</button>
+                    <button class="pay-btn" onclick="processPayment()">Process Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

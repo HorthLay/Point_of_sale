@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice History - POS System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="invoices.css">
+</head>
+<body>
+    <div class="container">
+        <div class="invoice-page">
+            <div class="header">
+                <h1>Invoice History</h1>
+                <button class="back-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-arrow-left"></i> Back to POS
+                </button>
+            </div>
+            <div class="invoice-filters">
+                <div class="search-bar">
+                    <input type="text" id="invoice-search" placeholder="Search by invoice number or date">
+                    <button onclick="searchInvoices()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="filter-options">
+                    <select id="status-filter">
+                        <option value="all">All Status</option>
+                        <option value="completed">Completed</option>
+                        <option value="returned">Returned</option>
+                    </select>
+                    <input type="date" id="date-from" placeholder="From Date">
+                    <input type="date" id="date-to" placeholder="To Date">
+                    <button onclick="applyFilters()">Apply Filters</button>
+                </div>
+            </div>
+            <div class="invoice-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Invoice #</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoice-table-body">
+                        <!-- Invoice rows will be populated here -->
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <button onclick="previousPage()"><i class="fas fa-chevron-left"></i></button>
+                    <span id="page-info">Page 1 of 1</span>
+                    <button onclick="nextPage()"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="invoices.js"></script>
+</body>
+</html>
